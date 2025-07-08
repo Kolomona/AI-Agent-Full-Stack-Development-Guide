@@ -8,7 +8,6 @@ This folder contains the AI Agent Full-Stack Development Guide, optimized for bu
 
 ### [@AI_AGENT_FULLSTACK_GUIDE.md](./AI_AGENT_FULLSTACK_GUIDE.md)
 **Main guide for all users**
-- **Length**: ~400 lines (streamlined)
 - **Focus**: Streamlined, AI-interpretable format
 - **Features**:
   - [Quick start section](./AI_AGENT_FULLSTACK_GUIDE.md#quick-start) for immediate use
@@ -20,7 +19,6 @@ This folder contains the AI Agent Full-Stack Development Guide, optimized for bu
 
 ### [QUICK_REFERENCE.md](./QUICK_REFERENCE.md)
 **Essential information at a glance**
-- **Length**: ~100 lines
 - **Focus**: Rapid reference for experienced users
 - **Features**:
   - [Context primer template](./QUICK_REFERENCE.md#context-primer-paste-at-start-of-each-conversation)
@@ -33,7 +31,6 @@ This folder contains the AI Agent Full-Stack Development Guide, optimized for bu
 
 ### [APPENDICES.md](./APPENDICES.md)
 **Detailed examples and advanced topics**
-- **Length**: ~800 lines
 - **Focus**: Comprehensive examples and advanced content
 - **Features**:
   - [Complete step-by-step examples](./APPENDICES.md#a1-complete-recipe-manager-example)
@@ -45,7 +42,6 @@ This folder contains the AI Agent Full-Stack Development Guide, optimized for bu
 
 ### [ROLE_SPECIFIC_GUIDES.md](./ROLE_SPECIFIC_GUIDES.md)
 **Complete role-specific guides**
-- **Length**: ~600 lines
 - **Focus**: Detailed guides for each AI agent role
 - **Features**:
   - [Backend AI Agent Guide](./ROLE_SPECIFIC_GUIDES.md#backend-ai-agent-guide)
