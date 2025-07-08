@@ -1,4 +1,4 @@
-# AI Agent Full-Stack Development Guide v4
+# AI Agent Full-Stack Development Guide
 ## Building Complete Web Applications with AI Teams
 
 *Streamlined guide for building full-stack web applications using multiple AI agents with contract-driven development, explicit project management, and production-grade workflows.*

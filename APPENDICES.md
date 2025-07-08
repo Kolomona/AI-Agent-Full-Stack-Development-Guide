@@ -844,4 +844,4 @@ export const env = envSchema.parse(process.env);
 
 ---
 
-*This appendices file contains detailed examples, configurations, and advanced topics referenced by the main guide. For the streamlined guide, see [@AI_AGENT_FULLSTACK_GUIDE-v4.md](./AI_AGENT_FULLSTACK_GUIDE-v4.md).* 
+*This appendices file contains detailed examples, configurations, and advanced topics referenced by the main guide. For the streamlined guide, see [@AI_AGENT_FULLSTACK_GUIDE.md](./AI_AGENT_FULLSTACK_GUIDE.md).* 

@@ -437,4 +437,4 @@ test.describe('User Authentication Flow', () => {
 
 ---
 
-*For the streamlined main guide, see [@AI_AGENT_FULLSTACK_GUIDE-v4.md](./AI_AGENT_FULLSTACK_GUIDE-v4.md).* 
+*For the streamlined main guide, see [@AI_AGENT_FULLSTACK_GUIDE.md](./AI_AGENT_FULLSTACK_GUIDE.md).* 
