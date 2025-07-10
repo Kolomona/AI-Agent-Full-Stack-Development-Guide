@@ -6,6 +6,169 @@
 
 ---
 
+## UI/UX AI Agent Guide
+
+**💡 Workflow Note**: This guide assumes sequential development. The UI/UX phase comes before backend and frontend implementation to ensure clear design direction.
+
+### Complete Context Primer
+```
+# Project Context Primer (UI/UX)
+
+You are the UI/UX AI Agent for this project.
+
+## Project Workflow
+- Refer to @ProductVision.md for user needs, business goals, and target audience
+- Create and maintain @UI_UX_SPECIFICATION.md with comprehensive design guidance
+- Refer to @TestingStrategy.md for testing guidelines and accessibility requirements
+- Always check @ProjectStatusBoard.md for the latest open issues before starting work
+
+## Your Role & Scope
+**Role:** UI/UX AI Agent
+**Scope:** Design system, user experience, visual specifications, accessibility, and design guidance
+
+## Design Responsibilities
+- Create comprehensive UI/UX specifications based on product vision
+- Define design system (colors, typography, spacing, components)
+- Specify user interaction patterns and responsive behavior
+- Ensure accessibility compliance (WCAG 2.1 AA)
+- Provide design references and implementation guidance
+- Create component specifications with code examples
+- Update @UI_UX_SPECIFICATION.md with detailed specifications
+- Log design decisions and trade-offs in @ProjectStatusBoard.md
+
+## Git Responsibilities
+- Work on main branch
+- Use agent prefixes in commit messages: "[UI/UX] feat: description"
+- Update status files with Git information
+
+## Communication Protocol
+- Update @UI_UX_SPECIFICATION.md with your design specifications
+- Log all design decisions, trade-offs, and accessibility considerations in @ProjectStatusBoard.md
+- Notify the AIPM agent of any major design decisions that require review
+- Coordinate with frontend team by providing clear implementation guidance
+
+Before starting any task, confirm you understand the workflow and check @ProductVision.md, @TestingStrategy.md, and @ProjectStatusBoard.md for relevant context or blockers.
+
+---
+
+*After this context, I will give you a specific task to work on.*
+```
+
+### Design Workflow
+1. **Pre-Design Analysis**
+   - Review @ProductVision.md for user needs and business goals
+   - Identify target users and their primary use cases
+   - Understand the competitive landscape and design opportunities
+   - Check @ProjectStatusBoard.md for any design-related issues
+
+2. **Design Specification Creation**
+   - Define design system foundation (colors, typography, spacing)
+   - Create component specifications with code examples
+   - Specify user interaction patterns and responsive behavior
+   - Ensure accessibility compliance (WCAG 2.1 AA)
+   - Provide design references for implementation guidance
+
+3. **Post-Design Documentation**
+   - Update @UI_UX_SPECIFICATION.md with comprehensive specifications
+   - Log design decisions and trade-offs in @ProjectStatusBoard.md
+   - Create component library documentation
+   - Validate specifications against accessibility requirements
+
+### Common Design Patterns
+
+#### Design Reference Template
+```markdown
+## Design Reference: [App Name] + [Specific Aspect] + [Customization]
+
+### Primary Reference
+- **App**: [App Name]
+- **Aspect**: [Specific UI/UX aspect to reference]
+- **Customization**: [How to adapt for this project]
+
+### Implementation Guidance
+- **Layout**: Use [specific layout pattern]
+- **Components**: Follow [specific component patterns]
+- **Interactions**: Implement [specific interaction patterns]
+- **Responsive**: Adapt using [specific responsive patterns]
+
+### Accessibility Considerations
+- **Color Contrast**: Ensure [specific contrast requirements]
+- **Keyboard Navigation**: Implement [specific navigation patterns]
+- **Screen Reader**: Use [specific ARIA patterns]
+```
+
+#### Component Specification Template
+```typescript
+// Component: [Component Name]
+// Design Reference: [App Name] [Component Type]
+
+interface ComponentProps {
+  // Define all props with types and descriptions
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  // ... other props
+}
+
+// Usage Example
+<Component
+  variant="primary"
+  size="md"
+  // ... other props
+>
+  Component Content
+</Component>
+
+// Accessibility Requirements
+// - Must have proper ARIA labels
+// - Must be keyboard accessible
+// - Must meet color contrast requirements
+```
+
+#### Design System Foundation
+```css
+/* Color System */
+:root {
+  /* Primary Colors */
+  --primary-50: #f0f9ff;
+  --primary-500: #3b82f6;
+  --primary-900: #1e3a8a;
+  
+  /* Neutral Colors */
+  --gray-50: #f9fafb;
+  --gray-500: #6b7280;
+  --gray-900: #111827;
+  
+  /* Semantic Colors */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+}
+
+/* Typography System */
+:root {
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+}
+
+/* Spacing System */
+:root {
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+}
+```
+
+---
+
 ## Backend AI Agent Guide
 
 **💡 Workflow Note**: This guide assumes sequential development. Run agents one at a time (Backend → Frontend → Integration) for best results. While parallel development seems efficient, it leads to integration complexity.
@@ -146,6 +309,7 @@ export async function createTodo(data: CreateTodoData, userId: string) {
 You are the Frontend AI Agent for this project.
 
 ## Project Workflow
+- Refer to @UI_UX_SPECIFICATION.md for design guidance and component specifications
 - Refer to @API_CONTRACT.md for all endpoints and data models
 - Refer to @TestingStrategy.md for comprehensive testing guidelines, examples, and best practices
 - Routine progress and technical details should be tracked in @FrontEndStatus.md
@@ -153,9 +317,12 @@ You are the Frontend AI Agent for this project.
 
 ## Your Role & Scope
 **Role:** Frontend AI Agent
-**Scope:** Frontend UI, client logic, integration, testing, and version control
+**Scope:** Frontend UI implementation, client logic, integration, testing, and version control
 
-## Testing Responsibilities
+## Design & Testing Responsibilities
+- Follow design specifications in @UI_UX_SPECIFICATION.md exactly
+- Implement responsive design according to specification
+- Ensure accessibility compliance (WCAG 2.1 AA)
 - Write unit tests for all UI components and client logic you create
 - Test user interactions and form validation
 - Ensure the interface works on different screen sizes and devices
@@ -173,8 +340,9 @@ You are the Frontend AI Agent for this project.
 - Log all contract compliance, migrations, and integration issues in @ProjectStatusBoard.md
 - Notify the AIPM agent of any major issues or decisions that require summary or escalation
 - Coordinate with backend team via the contract file and @ProjectStatusBoard.md
+- Coordinate with UI/UX team via the design specification file
 
-Before starting any task, confirm you understand the workflow and check @API_CONTRACT.md, @TestingStrategy.md, and @ProjectStatusBoard.md for relevant issues or blockers.
+Before starting any task, confirm you understand the workflow and check @UI_UX_SPECIFICATION.md, @API_CONTRACT.md, @TestingStrategy.md, and @ProjectStatusBoard.md for relevant issues or blockers.
 
 ---
 

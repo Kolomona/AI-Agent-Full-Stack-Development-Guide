@@ -3,6 +3,7 @@
 > **Note for Human Readers**: Throughout this document, `@` symbols are used before filename references (e.g., `@API_CONTRACT.md`) to help AI agents better understand file relationships and importance. These `@` symbols are **not part of the actual filenames** - they are only used in this documentation for AI interpretability. Actual filenames do not have `@` prefixes.
 
 ## Essential Files
+- @UI_UX_SPECIFICATION.md - Design guidance & user experience specifications
 - @API_CONTRACT.md - Single source of truth for endpoints & data models
 - @ProjectStatusBoard.md - Integration & ticketing (max 5 issues, 200 lines)
 - @FrontEndStatus.md / @BackEndStatus.md - Team progress logs
@@ -16,24 +17,25 @@
 # Project Context Primer
 You are an AI agent working as part of a multi-agent, contract-driven development team.
 
+- @UI_UX_SPECIFICATION.md = design guidance & user experience
 - @API_CONTRACT.md = single source of truth for endpoints & data models
 - @ProjectStatusBoard.md = integration & ticketing (max 5 open issues, 200 lines)
 - All agents write to @ProjectStatusBoard.md for issues/decisions
 - AIPM agent curates @ProjectStatusBoard.md format & archives
-- Check @ProjectStatusBoard.md, @API_CONTRACT.md, @TestingStrategy.md before starting
+- Check @ProjectStatusBoard.md, @UI_UX_SPECIFICATION.md, @API_CONTRACT.md, @TestingStrategy.md before starting
 - If @ProjectStatusBoard.md exceeds 200 lines, create issue for AIPM to archive
 
-Your role: [Backend/Frontend/AIPM]
+Your role: [UI/UX/Backend/Frontend/AIPM]
 Your scope: [Define specific responsibilities]
 ```
 
 ## Development Cycle
 ```
-Setup Tech Stack → Update Contract → Backend Implementation → Frontend Implementation → 
+Setup Tech Stack → UI/UX Design → Update Contract → Backend Implementation → Frontend Implementation → 
 Integration Testing → AIPM Summary → Repeat
 ```
 
-**💡 Workflow Note**: Run agents sequentially, not simultaneously. While parallel development seems efficient, it leads to integration complexity and contract mismatches.
+**💡 Workflow Note**: Run agents sequentially, not simultaneously. The UI/UX phase ensures frontend teams have clear design direction before implementation begins.
 
 ## Tech Stack Setup (Recommended)
 **Start with a skeleton project for best results:**
@@ -47,6 +49,13 @@ Integration Testing → AIPM Summary → Repeat
 
 ## Team Responsibilities
 
+### UI/UX AI
+- Create and maintain @UI_UX_SPECIFICATION.md with design guidance
+- Define design system, component patterns, and user flows
+- Specify accessibility and responsive requirements
+- Provide design references and implementation guidance
+- Log design decisions in @ProjectStatusBoard.md
+
 ### Backend AI
 - Implement endpoints from @API_CONTRACT.md
 - Write unit tests for all endpoints & business logic
@@ -54,7 +63,7 @@ Integration Testing → AIPM Summary → Repeat
 - Log contract compliance, migrations, integration issues in @ProjectStatusBoard.md
 
 ### Frontend AI
-- Build UI using endpoints from @API_CONTRACT.md
+- Build UI using @UI_UX_SPECIFICATION.md and @API_CONTRACT.md
 - Write unit tests for all UI components & client logic
 - Update @FrontEndStatus.md with progress & blockers
 - Log contract compliance, migrations, integration issues in @ProjectStatusBoard.md
@@ -90,6 +99,17 @@ Integration Testing → AIPM Summary → Repeat
 
 *For detailed structure and archiving workflow, see [ProjectStatusBoard.md Structure](#projectstatusboardmd-structure) in the main guide.*
 
+## Design Reference Examples
+- "Like Spotify's playlist interface but for recipe collections"
+- "Use GitHub's issue tracking UI but for task management"
+- "Follow Material Design 3 patterns with custom color scheme"
+- "Use Notion's block-based editor for content creation"
+- "Dashboard layout like Figma, with sidebar and main content area"
+- "Card layouts like Pinterest, responsive grid with hover effects"
+- "Form design like Linear, clean with floating labels"
+
+*Specify design references in @UI_UX_SPECIFICATION.md for best results. If no reference is provided, default to a modern, minimal design system (e.g., Material Design 3).* 
+
 ## Testing Requirements
 - **Unit Tests (70%)**: Individual pieces work correctly
 - **Integration Tests (20%)**: Pieces work together
@@ -101,7 +121,7 @@ Integration Testing → AIPM Summary → Repeat
 
 ## Git Workflow
 - Work on main branch
-- Use agent prefixes: `[Backend] feat: description` / `[Frontend] feat: description`
+- Use agent prefixes: `[UI/UX] feat: description` / `[Backend] feat: description` / `[Frontend] feat: description`
 - Update status files with git information
 
 ## Common Issues & Solutions

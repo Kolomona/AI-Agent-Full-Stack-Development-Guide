@@ -14,6 +14,7 @@
    your-project/
    ├── ai/
    │   ├── ProductVision.md           # Business plan & requirements
+   │   ├── UI_UX_SPECIFICATION.md     # Design guidance & user experience
    │   ├── API_CONTRACT.md            # Living contract (frontend ↔ backend)
    │   ├── ProjectStatusBoard.md      # Integration & ticketing system
    │   ├── FrontEndStatus.md          # Frontend progress log
@@ -41,11 +42,11 @@
 
 3. **Development Cycle**
    ```
-   Setup Tech Stack → Update Contract → Backend Implementation → Frontend Implementation → 
+   Setup Tech Stack → UI/UX Design → Update Contract → Backend Implementation → Frontend Implementation → 
    Integration Testing → AIPM Summary → Repeat
    ```
    
-   **💡 Workflow Note**: Run agents sequentially, not simultaneously. While parallel development seems efficient, it leads to integration complexity and contract mismatches.
+   **💡 Workflow Note**: Run agents sequentially, not simultaneously. While parallel development seems efficient, it leads to integration complexity and contract mismatches. The UI/UX phase ensures frontend teams have clear design direction before implementation begins.
 
 ---
 
@@ -58,14 +59,21 @@ Single AI development results in:
 - ❌ Missing features & quality problems
 
 ### The Solution: AI Agent Teams
+- **🎨 UI/UX AI**: Design guidance, user experience, visual specifications
 - **🤖 Backend AI**: Server-side code, databases, APIs
-- **🎨 Frontend AI**: UI, styling, user experience  
+- **🎨 Frontend AI**: UI implementation, styling, user experience  
 - **📋 AIPM Agent**: Coordination, summary, file curation
 - **👤 Human PM**: Strategic decisions & validation
 
-**💡 Key Insight**: Run agents sequentially, not simultaneously. While it's tempting to have frontend and backend work at the same time, this becomes too complicated and leads to integration issues. Sequential workflow (Backend → Frontend → Integration) produces better results.
+**💡 Key Insight**: Run agents sequentially, not simultaneously. While it's tempting to have frontend and backend work at the same time, this becomes too complicated and leads to integration issues. Sequential workflow (UI/UX Design → Backend → Frontend → Integration) produces better results and ensures frontend teams have clear design direction.
 
 ### Contract-Driven Method
+**@UI_UX_SPECIFICATION.md** = design blueprint defining:
+- Visual design system & component specifications
+- User experience patterns & interactions
+- Design references & implementation guidance
+- Accessibility requirements & responsive behavior
+
 **@API_CONTRACT.md** = living blueprint defining:
 - Data models & formats
 - Frontend/backend communication
@@ -114,17 +122,19 @@ Create @ProductVision.md with:
 Use AIPM prompt:
 ```
 "Read @ProductVision.md and generate all foundational files:
-1. @API_CONTRACT.md - Detailed, living contract
-2. @FrontEndStatus.md - Frontend progress tracking
-3. @BackEndStatus.md - Backend progress tracking  
-4. @ProjectStatusBoard.md - Integration & ticketing system
-5. @TestingStrategy.md - Testing guidelines & examples
-
+1. @UI_UX_SPECIFICATION.md - Design guidance & user experience specifications
+2. @API_CONTRACT.md - Detailed, living contract
+3. @FrontEndStatus.md - Frontend progress tracking
+4. @BackEndStatus.md - Backend progress tracking  
+5. @ProjectStatusBoard.md - Integration & ticketing system
+6. @TestingStrategy.md - Testing guidelines & examples
 
 Comment each file with purpose and usage instructions."
 ```
 
 ### Step 3: Review & Refine
+- ✅ UI/UX specification provides clear design direction?
+- ✅ Design references appropriate for target users?
 - ✅ API contract covers all features?
 - ✅ Data models correct & contract-compliant?
 - ✅ Instructions & protocols clear?
@@ -133,6 +143,60 @@ Comment each file with purpose and usage instructions."
 ---
 
 ## AI Team Workflows
+
+### UI/UX AI Agent
+
+**Context Primer:**
+```
+# Project Context Primer (UI/UX)
+You are the UI/UX AI Agent for this project.
+
+- Refer to @ProductVision.md for user needs and business goals
+- Create @UI_UX_SPECIFICATION.md with design guidance
+- Refer to @TestingStrategy.md for testing guidelines
+- Check @ProjectStatusBoard.md for open issues before starting
+
+Your role: UI/UX Design
+Your scope: Design system, user experience, visual specifications, accessibility
+
+Design Responsibilities:
+- Create comprehensive UI/UX specifications
+- Define design system and component patterns
+- Specify user interaction flows and responsive behavior
+- Ensure accessibility compliance (WCAG 2.1 AA)
+- Provide design references and implementation guidance
+- Update @UI_UX_SPECIFICATION.md with detailed specifications
+- Log design decisions in @ProjectStatusBoard.md
+
+Git Responsibilities:
+- Work on main branch
+- Use agent prefixes in commit messages: "[UI/UX] feat: description"
+- Update status files with git information
+```
+
+*For detailed workflows and implementation patterns, see [@ROLE_SPECIFIC_GUIDES.md](./ROLE_SPECIFIC_GUIDES.md#uiux-ai-agent-guide).*
+
+**Design Specification Prompt:**
+```
+"Create comprehensive UI/UX specification based on @ProductVision.md.
+Focus on: [specific features or user flows]
+
+Requirements:
+1. Define design system (colors, typography, spacing, components)
+2. Specify user interaction patterns and responsive behavior
+3. Provide design references for implementation guidance
+4. Ensure accessibility compliance (WCAG 2.1 AA)
+5. Create component specifications with code examples
+6. Update @UI_UX_SPECIFICATION.md with detailed specifications
+7. Log design decisions and trade-offs in @ProjectStatusBoard.md
+
+Design Reference Strategy:
+- Use format: "Like [App Name] but for [specific use case]"
+- Provide specific component and layout references
+- Include interaction patterns and user flow examples
+- Specify responsive behavior for all screen sizes
+- Define accessibility requirements and testing criteria"
+```
 
 ### Backend AI Agent
 
@@ -193,6 +257,7 @@ Testing Requirements:
 # Project Context Primer (Frontend)
 You are the Frontend AI Agent for this project.
 
+- Refer to @UI_UX_SPECIFICATION.md for design guidance & component specifications
 - Refer to @API_CONTRACT.md for endpoints & data models
 - Refer to @TestingStrategy.md for testing guidelines
 - Track progress in @FrontEndStatus.md
@@ -218,16 +283,18 @@ Git Responsibilities:
 
 **Implementation Prompt:**
 ```
-"Build frontend components using endpoints defined in @API_CONTRACT.md.
+"Build frontend components using @UI_UX_SPECIFICATION.md for design guidance and @API_CONTRACT.md for data.
 Focus on: [specific features]
 
 Requirements:
-1. Use only endpoints defined in contract
-2. Handle loading states & errors gracefully
-3. Make UI responsive & accessible
-4. Use mock data for unimplemented features
-5. Update @FrontEndStatus.md with progress & blockers
-6. Log contract compliance, migrations, integration issues in @ProjectStatusBoard.md
+1. Follow design specifications in @UI_UX_SPECIFICATION.md exactly
+2. Use only endpoints defined in @API_CONTRACT.md
+3. Implement responsive design according to specification
+4. Handle loading states & errors gracefully
+5. Ensure accessibility compliance (WCAG 2.1 AA)
+6. Use mock data for unimplemented features
+7. Update @FrontEndStatus.md with progress & blockers
+8. Log contract compliance, migrations, integration issues in @ProjectStatusBoard.md
 
 Testing Requirements:
 - Write unit tests for all UI components created
@@ -286,6 +353,78 @@ Testing Requirements:
 - Log all test results, issues, fixes in @ProjectStatusBoard.md
 - Ensure test coverage meets requirements"
 ```
+
+---
+
+## Addressing the Design Gap
+
+### The Problem: Frontend Teams "Driving Blindly"
+**Challenge**: Frontend teams were building technically functional but ugly/unusable interfaces because they only had API contracts but no design guidance.
+
+**Root Cause**: The original workflow `ProductVision.md → API_CONTRACT.md → Backend → Frontend` lacked a crucial design phase.
+
+### The Solution: UI/UX Specification Phase
+**New Workflow**: `ProductVision.md → UI_UX_SPECIFICATION.md → API_CONTRACT.md → Backend → Frontend`
+
+**Key Benefits**:
+- ✅ Frontend teams have clear design direction
+- ✅ Consistent visual design across all components
+- ✅ Better user experience from the start
+- ✅ Reduced rework and design iterations
+- ✅ Accessibility and responsive design built-in
+
+### AI Design Limitations & Practical Solutions
+
+#### **The Reality: AI Cannot Create Original Design**
+**Challenge**: AI cannot create innovative, original design without human guidance.
+**Solution**: Use design references, patterns, and templates to guide AI implementation.
+
+#### **Design Generation Strategies**
+1. **Design References**: "Like Spotify's playlist interface but for recipe collections"
+2. **Template Patterns**: "Use e-commerce template for music store"
+3. **Component Libraries**: "Use Material Design 3 with custom color scheme"
+4. **Design Systems**: "Follow Notion's design patterns for content management"
+
+#### **Minimal Human Input Requirements**
+**Minimum Required**: Design reference or template preference
+**Examples**:
+- "Make it look like Notion"
+- "Use a clean, modern design like Linear"
+- "Follow Material Design principles"
+- "Use a dashboard layout like Figma"
+
+#### **Fallback Strategy**
+**When No Design Reference Provided**:
+1. Use a default modern design system (Material Design 3 or Apple HIG)
+2. Implement clean, minimal interface with standard patterns
+3. Focus on functionality over aesthetics
+4. Document the need for design review in @ProjectStatusBoard.md
+
+#### **Acceptable Outcomes with Zero Human Guidance**
+- Functional, accessible interfaces
+- Clean, minimal design using standard patterns
+- Responsive design that works on all devices
+- WCAG 2.1 AA compliance
+- Consistent component library
+
+### Design Reference Framework
+
+#### **How to Specify Design References**
+```
+Design Reference: [App/Website] + [Specific Aspect] + [Customization]
+```
+
+**Examples**:
+- "Like GitHub's issue tracking but for personal tasks"
+- "Use Spotify's playlist interface for recipe collections"
+- "Follow Notion's database view for content management"
+- "Use Linear's clean interface for project management"
+
+#### **Design Reference Categories**
+- **Navigation**: Like GitHub (top nav) or Notion (sidebar)
+- **Data Display**: Like Airtable (tables) or Pinterest (cards)
+- **Forms**: Like Linear (clean) or Stripe (professional)
+- **User Feedback**: Like Slack (notifications) or Figma (empty states)
 
 ---
 

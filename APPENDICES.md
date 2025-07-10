@@ -8,7 +8,7 @@
 
 ## Appendix A: Detailed Examples
 
-### A.1: Complete Recipe Manager Example
+### A.1: Complete Recipe Manager Example (with UI/UX Phase)
 
 #### Step 1: Create @ProductVision.md
 ```markdown
@@ -54,7 +54,42 @@ A web app for storing and managing cooking recipes.
 - POST /api/ingredients
 ```
 
-#### Step 2: Generated @API_CONTRACT.md
+#### Step 2: Create @UI_UX_SPECIFICATION.md
+```markdown
+# @UI_UX_SPECIFICATION.md - Recipe Manager
+
+## Design Reference
+Like Notion's database view but for recipe collections
+- Use card-based layout for recipe browsing
+- Implement drag-and-drop for recipe organization
+- Follow Notion's clean, minimal aesthetic
+- Use similar color scheme and typography
+
+## Design System
+- Primary color: #3b82f6 (blue)
+- Neutral color: #f9fafb (light gray)
+- Font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif
+
+## Component Patterns
+- Card: Recipe summary with image, title, and actions
+- Sidebar: Navigation for recipe categories
+- Button: Primary (blue), secondary (gray)
+
+## User Flows
+- Add recipe: Button → Modal form → Save
+- Edit recipe: Card action → Modal form → Save
+- Delete recipe: Card action → Confirm dialog
+
+## Accessibility
+- All buttons and forms keyboard accessible
+- Sufficient color contrast (WCAG 2.1 AA)
+- ARIA labels for all interactive elements
+
+## Fallback Strategy
+If no design reference is provided, use Material Design 3 as the default system.
+```
+
+#### Step 3: Generated @API_CONTRACT.md
 ```markdown
 # @API_CONTRACT.md
 
@@ -95,7 +130,7 @@ interface Recipe {
 ```
 ```
 
-#### Step 3: Backend Implementation
+#### Step 4: Backend Implementation
 ```typescript
 // Example backend endpoint implementation
 export async function POST(request: Request) {
@@ -123,7 +158,7 @@ export async function POST(request: Request) {
 }
 ```
 
-#### Step 4: Frontend Implementation
+#### Step 5: Frontend Implementation
 ```typescript
 // Example frontend component
 export default function RecipeList() {
@@ -158,7 +193,7 @@ export default function RecipeList() {
 }
 ```
 
-#### Step 5: Integration Testing
+#### Step 6: Integration Testing
 ```typescript
 // Example E2E test
 test('user can register, login, and create a recipe', async ({ page }) => {
@@ -183,6 +218,10 @@ test('user can register, login, and create a recipe', async ({ page }) => {
   await expect(page.locator('[data-testid="recipe-list"]')).toContainText('Test Recipe');
 });
 ```
+
+> **Note:** The UI/UX phase is now required before backend and frontend implementation. Always provide a design reference or specify a fallback strategy in @UI_UX_SPECIFICATION.md. If no human input is available, the AI will use a default modern design system (e.g., Material Design 3) and document the need for review in @ProjectStatusBoard.md.
+
+---
 
 ### A.2: Advanced Testing Examples
 
